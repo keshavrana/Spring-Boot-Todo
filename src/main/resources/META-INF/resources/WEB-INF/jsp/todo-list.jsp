@@ -7,9 +7,18 @@
 </head>
 <body>
 	<div class="container">
-		<div>Welcome ${name}</div>
-		<hr>
-		<h1>Your Todo Application</h1>
+		<nav class="navbar navbar-expand-md navbar-light bg-light mb-3 p-1">
+			<a class="navbar-brand m-1" href="todo-list">Todo App</a>
+			<div class="collapse navbar-collapse">
+				<ul class="navbar-nav">
+					<li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+					<li class="nav-item"><a class="nav-link" href="addtodo">Add Todos</a></li>
+				</ul>
+			</div>
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+			</ul>
+		</nav>
 		<table class="table">
 			<thead>
 				<tr>
@@ -31,7 +40,8 @@
 						<td>${item.targetDate}</td>
 						<td>${item.done}</td>
 						<td><a href="edittodo?id=${item.id}" class="btn btn-success">Edit</a></td>
-						<td><a href="deletetodo?id=${item.id}" class="btn btn-warning">Delete</a></td>
+						<td><a href="deletetodo?id=${item.id}"
+							class="btn btn-warning">Delete</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>

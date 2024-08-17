@@ -26,14 +26,9 @@ public class TodoController {
 
 	@RequestMapping("/todo-list")
 	public String todoList(ModelMap model) {
-		String username = (String) model.get("name");
-		if (username != null) {
-			List<Todo> todo = todoservices.findAll();
-			model.put("todos", todo);
-			return "todo-list";
-		} else {
-			return "redirect:/";
-		}
+		List<Todo> todo = todoservices.findAll();
+		model.put("todos", todo);
+		return "todo-list";
 	}
 
 	@GetMapping("/addtodo")
@@ -50,13 +45,10 @@ public class TodoController {
 			return "addtodo";
 		} else {
 			String username = (String) model.get("name");
-			if (username != null) {
-				Todo todos = new Todo(username, todo.getDescription(), todo.getTargetDate(), todo.isDone());
-				todoservices.save(todos);
-				return "redirect:/todo-list";
-			} else {
-				return "redirect:/";
-			}
+			Todo todos = new Todo(username, todo.getDescription(), todo.getTargetDate(), todo.isDone());
+			todoservices.save(todos);
+			return "redirect:/todo-list";
+
 		}
 	}
 
@@ -79,13 +71,10 @@ public class TodoController {
 			return "addtodo";
 		} else {
 			String username = (String) model.get("name");
-			if (username != null) {
-				todo.setUsername(username);
-				todoservices.save(todo);
-				return "redirect:/todo-list";
-			} else {
-				return "redirect:/";
-			}
+			todo.setUsername(username);
+			todoservices.save(todo);
+			return "redirect:/todo-list";
+
 		}
 	}
 
